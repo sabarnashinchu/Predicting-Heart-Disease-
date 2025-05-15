@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Heart Disease Prediction Tool</h1>
+            <p>Enter your medical information to assess your heart disease risk</p>
+        </header>
+        
+        <div class="form-container">
+            <form id="prediction-form">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required min="1" max="120">
+                </div>
+                
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="sex" value="male" checked> Male
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" value="female"> Female
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cp">Chest Pain Type (0-3)</label>
+                    <select id="cp" name="cp" required>
+                        <option value="0">0 - Typical Angina</option>
+                        <option value="1">1 - Atypical Angina</option>
+                        <option value="2">2 - Non-anginal Pain</option>
+                        <option value="3">3 - Asymptomatic</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trestbps">Resting Blood Pressure (mm Hg)</label>
+                    <input type="number" id="trestbps" name="trestbps" required min="50" max="300">
+                </div>
+                
+                <div class="form-group">
+                    <label for="chol">Serum Cholesterol (mg/dl)</label>
+                    <input type="number" id="chol" name="chol" required min="100" max="600">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fbs">Fasting Blood Sugar (mg/dl)</label>
+                    <input type="number" id="fbs" name="fbs" required min="50" max="300">
+                </div>
+                
+                <div class="form-group">
+                    <label for="restecg">Resting ECG Results (0-2)</label>
+                    <select id="restecg" name="restecg" required>
+                        <option value="0">0 - Normal</option>
+                        <option value="1">1 - ST-T Wave Abnormality</option>
+                        <option value="2">2 - Left Ventricular Hypertrophy</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="thalach">Max Heart Rate Achieved</label>
+                    <input type="number" id="thalach" name="thalach" required min="50" max="300">
+                </div>
+                
+                <div class="form-group">
+                    <label>Exercise Induced Angina</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="exang" value="yes"> Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="exang" value="no" checked> No
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="oldpeak">ST Depression Induced by Exercise</label>
+                    <input type="number" id="oldpeak" name="oldpeak" required step="0.1" min="0" max="10">
+                </div>
+                
+                <div class="form-group">
+                    <label for="slope">Slope of Peak Exercise ST Segment</label>
+                    <select id="slope" name="slope" required>
+                        <option value="0">0 - Upsloping</option>
+                        <option value="1">1 - Flat</option>
+                        <option value="2">2 - Downsloping</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ca">Number of Major Vessels (0-3)</label>
+                    <select id="ca" name="ca" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="thal">Thalassemia</label>
+                    <select id="thal" name="thal" required>
+                        <option value="1">1 - Normal</option>
+                        <option value="2">2 - Fixed Defect</option>
+                        <option value="3">3 - Reversible Defect</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="predict-btn">Predict</button>
+            </form>
+        </div>
+        
+        <div id="result" class="result-container hidden">
+            <h2>Prediction Result</h2>
+            <div id="result-content"></div>
+            <div class="progress-container">
+                <div class="progress-bar" id="probability-bar"></div>
+            </div>
+            <button id="reset-btn" class="reset-btn">Make Another Prediction</button>
+        </div>
+        
+        <div id="loading" class="loading-container hidden">
+            <div class="loader"></div>
+            <p>Analyzing your data...</p>
+        </div>
+        
+        <footer>
+            <p>Note: This is a demonstration tool and should not be used for medical diagnosis.</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
